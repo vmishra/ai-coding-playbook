@@ -1,0 +1,22 @@
+{
+  "_comment": "Example .mcp.json to commit at a project root. Engineers cloning the repo inherit these servers. Secrets come from env vars (BILLING_DATABASE_URL etc.) — never commit secret values here.",
+
+  "mcpServers": {
+    "filesystem": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "${CLAUDE_PROJECT_DIR}"]
+    },
+
+    "git": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-git"]
+    },
+
+    "figma-dev-mode": {
+      "type": "http",
+      "url": "http://127.0.0.1:3845/mcp"
+    }
+  }
+}

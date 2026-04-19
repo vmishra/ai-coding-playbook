@@ -1,0 +1,24 @@
+{
+  "_comment": "Example ~/.gemini/settings.json fragment. Merge into your existing settings — do not replace the whole file unless you know that's what you want.",
+
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "${HOME}/projects"
+      ]
+    },
+
+    "git": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-git"]
+    },
+
+    "figma-dev-mode": {
+      "httpUrl": "http://127.0.0.1:3845/mcp",
+      "timeout": 30000
+    }
+  }
+}
