@@ -1,0 +1,49 @@
+{
+  "_comment": "Example ~/.gemini/settings.json. Copy values that make sense for you — do not wholesale replace your existing settings.",
+
+  "theme": "Default",
+
+  "context": {
+    "fileName": ["GEMINI.md", "AGENTS.md"]
+  },
+
+  "excludeTools": [
+    "run_shell_command(rm -rf)",
+    "run_shell_command(sudo *)"
+  ],
+
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "${HOME}/projects"]
+    }
+  },
+
+  "hooks": {
+    "BeforeTool": [
+      {
+        "matcher": "run_shell_command",
+        "hooks": [
+          {
+            "name": "block-rm-rf",
+            "type": "command",
+            "command": "${GEMINI_PROJECT_DIR}/.gemini/hooks/block-rm-rf.sh",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "AfterTool": [
+      {
+        "hooks": [
+          {
+            "name": "audit-log",
+            "type": "command",
+            "command": "${GEMINI_PROJECT_DIR}/.gemini/hooks/audit-log.sh",
+            "timeout": 2000
+          }
+        ]
+      }
+    ]
+  }
+}
