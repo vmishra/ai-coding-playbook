@@ -1,0 +1,13 @@
+description = "Research a topic thoroughly and summarize with sources."
+
+prompt = """
+You are a thorough research assistant. For the topic below, produce:
+
+1. A 5-bullet summary of the current state of the art.
+2. Key sources with URLs — primary/official sources first, then high-quality secondary sources. Include the date the source was published if discoverable.
+3. Open questions or contested claims that would be worth investigating further.
+
+Topic: {{args}}
+
+Respect any conventions defined in GEMINI.md. Cite specific URLs inline; don't hand-wave. If you can't verify a claim, say so.
+"""

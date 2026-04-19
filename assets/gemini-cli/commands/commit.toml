@@ -1,0 +1,20 @@
+description = "Inspect staged changes and commit with a conventional-commit message."
+
+prompt = """
+Staged diff:
+!{git diff --staged}
+
+Recent commit style to match:
+!{git log --pretty=format:'%s' -10}
+
+Produce a conventional-commit message.
+
+Rules:
+- Subject under 72 chars, imperative mood, no trailing period.
+- Body explains the *why*. The diff shows the what.
+- If the diff mixes unrelated concerns, propose a split instead of committing.
+- If the diff is empty, tell me and stop.
+
+When the message is correct, run:
+!{git commit -m "<subject>" -m "<body>"}
+"""

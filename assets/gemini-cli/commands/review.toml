@@ -1,0 +1,29 @@
+description = "Review the branch's changes against main with a severity-classified report."
+
+prompt = """
+Review the changes on this branch against main.
+
+Diff vs main:
+!{git diff main...HEAD}
+
+Commit history on this branch:
+!{git log main..HEAD --oneline}
+
+Produce output in this exact shape:
+
+## Summary
+<2-3 factual sentences. No fluff.>
+
+## Concerns (by severity)
+- **Critical:** <issues that block merge, or 'none'>
+- **Should fix:** <important but not blocking, or 'none'>
+- **Nit:** <style/polish, or 'none'>
+
+## Specific comments
+- `path/to/file.ts:L<line>` — <comment, quoting the relevant diff>
+
+Rules:
+- Name the real problem. Don't hedge.
+- Cite line numbers. 'Somewhere in the diff' isn't useful.
+- If the diff looks fine, say 'no concerns' clearly. Don't invent work.
+"""
