@@ -56,3 +56,4 @@ tmp/
 # Built assets (we keep sources only)
 *.zip
 *.tar.gz
+presentation/*.pdf
